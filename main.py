@@ -1,42 +1,42 @@
-from InternetTools import SpeedTests
+from InternetTools import Speed
+from InternetTools import IpChecker
 from colorama import Fore
 from colorama import Style
-import os
 
 
 def do_speedtest():
-    test = SpeedTests()
-    print("Proszę czekać, trwa wykonywanie testu...")
-    print("Lokalizacja serwera", )
+    test = Speed()
+    print("Please wait...")
+    print("Server location:", )
     for key, value in test.get_test_info():
         print(key, ' : ', value)
 
     print()
 
-    print(f"Ping:{Fore.LIGHTGREEN_EX}", round(test.checkPing()), f"ms {Style.RESET_ALL}")
-    print(f"Prędkość pobierania:{Fore.LIGHTGREEN_EX}", + round(test.checkDownload(), 2), f"Mbps{Style.RESET_ALL}")
-    print(f"Prędkość wysyłania:{Fore.LIGHTGREEN_EX}", round(test.checkUpload(), 2), f"Mbps{Style.RESET_ALL}")
+    print(f"Ping:{Fore.LIGHTGREEN_EX}", round(test.check_ping()), f"ms {Style.RESET_ALL}")
+    print(f"Download speed:{Fore.LIGHTGREEN_EX}", + round(test.check_download(), 2), f"Mbps{Style.RESET_ALL}")
+    print(f"Upload speed: {Fore.LIGHTGREEN_EX}", round(test.check_upload(), 2), f"Mbps{Style.RESET_ALL}")
 
 
-def get_ip_addresses():
-    print(os.system("ipconfig"))
+def show_menu():
+    print("Network tools")
+    print()
+    print("Select an option:")
+    print("1. Internet speedtest (Pobieranie, Wysyłanie, Ping)")
+    print("2. Show IP addresses")
+    print("3. Show public IP address ")
+    print()
 
 
-print("Network tools")
-print()
-print("Wybierz odpowiednią opcję:")
-print("1. Test internetu (Pobieranie, Wysyłanie, Ping)")
-print("2. Wyświetl adresację IP")
-print()
-
-while (True):
+while True:
+    show_menu()
     option = int(input())
     match option:
         case 1:
             do_speedtest()
         case 2:
-            get_ip_addresses()
+            IpChecker.get_ip_addresses()
+        case 3:
+            print(f"{Fore.LIGHTGREEN_EX}", IpChecker.get_public_ip_address(), f"{Style.RESET_ALL}")
         case _:
-            print("Wybrałeś błędną opcję, spróbuj ponownie.")
-
-    "Wybierz kolejną opcję."
+            print("Wrong option, try again.")
