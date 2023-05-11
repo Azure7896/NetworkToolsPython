@@ -1,7 +1,9 @@
 import speedtest as st
+import os
+import requests
 
-class SpeedTests:
 
+class Speed:
     server = st.Speedtest()
     jsonTestInfo = server.get_best_server()
 
@@ -10,30 +12,35 @@ class SpeedTests:
 
     @classmethod
     def get_test_info(cls):
-        return SpeedTests.jsonTestInfo.items()
-
+        return Speed.jsonTestInfo.items()
 
     @classmethod
-    def checkDownload(cls):
-        down = SpeedTests.server.download()
+    def check_download(cls):
+        down = Speed.server.download()
         down = down / 1000000
         return down
 
     @classmethod
-    def checkUpload(cls):
-        upload = SpeedTests.server.upload()
+    def check_upload(cls):
+        upload = Speed.server.upload()
         upload = upload / 1000000
         return upload
 
     @classmethod
-    def checkPing(cls):
-        ping = SpeedTests.server.results.ping
+    def check_ping(cls):
+        ping = Speed.server.results.ping
         return ping
 
-    class IpChecker:
 
-        def __init__(self):
-            pass
+class IpChecker:
 
+    def __init__(self):
+        pass
 
+    @classmethod
+    def get_ip_addresses(cls):
+        return os.system("ipconfig")
 
+    @classmethod
+    def get_public_ip_address(cls):
+        return str(requests.get('https://checkip.amazonaws.com').text.strip())
