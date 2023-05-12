@@ -1,6 +1,7 @@
 import speedtest as st
 import os
 import requests
+import socket
 
 
 class Speed:
@@ -44,3 +45,19 @@ class IpChecker:
     @classmethod
     def get_public_ip_address(cls):
         return str(requests.get('https://checkip.amazonaws.com').text.strip())
+
+
+class PortChecker:
+
+    def __init(self):
+        pass
+
+    @classmethod
+    def port_check(cls, port_number):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(2)
+        try:
+            s.connect(("127.0.0.1", port_number))
+            return True
+        except:
+            return False
