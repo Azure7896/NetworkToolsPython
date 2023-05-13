@@ -1,3 +1,4 @@
+import resolver
 import speedtest as st
 import os
 import requests
@@ -49,7 +50,7 @@ class IpChecker:
 
 class PortChecker:
 
-    def __init(self):
+    def __init__(self):
         pass
 
     @classmethod
@@ -61,3 +62,17 @@ class PortChecker:
             return True
         except:
             return False
+
+
+class DnsChecker:
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def resolve_name_to_ip(cls, name):
+        return socket.gethostbyname(name)
+
+    @classmethod
+    def resolve_ip_to_name(cls, ip_address):
+        return socket.gethostbyaddr(ip_address)
