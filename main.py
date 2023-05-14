@@ -33,12 +33,18 @@ def check_port():
 def resolve_dns_name():
     name = input()
     dns_checker = DnsChecker()
-    print(f"{Fore.LIGHTGREEN_EX}Name", name, "is resolved to an IP", dns_checker.resolve_name_to_ip(name),f"{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTGREEN_EX}Name", name, "is resolved to an IP", dns_checker.resolve_name_to_ip(name),
+          f"{Style.RESET_ALL}")
+
 
 def resolve_ip():
     ip_address = input()
     dns_checker = DnsChecker
-    print(f"{Fore.LIGHTGREEN_EX}Ip address", ip_address, "is resolved to a name", dns_checker.resolve_ip_to_name(ip_address),f"{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTGREEN_EX}Ip address", ip_address, "is resolved to a name",
+          dns_checker.resolve_ip_to_name(ip_address), f"{Style.RESET_ALL}")
+
+def get_public_ip_address():
+    print(f"{Fore.LIGHTGREEN_EX}", IpChecker.get_public_ip_address(), f"{Style.RESET_ALL}")
 
 
 def show_menu():
@@ -63,7 +69,7 @@ while True:
         case 2:
             IpChecker.get_ip_addresses()
         case 3:
-            print(f"{Fore.LIGHTGREEN_EX}", IpChecker.get_public_ip_address(), f"{Style.RESET_ALL}")
+            get_public_ip_address()
         case 4:
             check_port()
         case 5:
