@@ -1,8 +1,8 @@
-import resolver
-import speedtest as st
 import os
-import requests
 import socket
+
+import requests
+import speedtest as st
 
 
 class Speed:
@@ -64,7 +64,7 @@ class PortChecker:
             return False
 
 
-class DnsChecker:
+class DnsResolver:
 
     def __init__(self):
         pass
@@ -76,3 +76,14 @@ class DnsChecker:
     @classmethod
     def resolve_ip_to_name(cls, ip_address):
         return socket.gethostbyaddr(ip_address)
+
+
+class Tracert:
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def trace(cls, destination):
+        command = "tracert " + destination
+        return os.system(command)

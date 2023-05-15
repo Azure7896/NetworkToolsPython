@@ -1,9 +1,11 @@
-from InternetTools import Speed
-from InternetTools import IpChecker
 from colorama import Fore
 from colorama import Style
+
+from InternetTools import DnsResolver
+from InternetTools import IpChecker
 from InternetTools import PortChecker
-from InternetTools import DnsChecker
+from InternetTools import Speed
+from InternetTools import Tracert
 
 
 def do_speedtest():
@@ -32,19 +34,27 @@ def check_port():
 
 def resolve_dns_name():
     name = input()
-    dns_checker = DnsChecker()
+    dns_checker = DnsResolver
     print(f"{Fore.LIGHTGREEN_EX}Name", name, "is resolved to an IP", dns_checker.resolve_name_to_ip(name),
           f"{Style.RESET_ALL}")
 
 
 def resolve_ip():
     ip_address = input()
-    dns_checker = DnsChecker
+    dns_checker = DnsResolver
     print(f"{Fore.LIGHTGREEN_EX}Ip address", ip_address, "is resolved to a name",
           dns_checker.resolve_ip_to_name(ip_address), f"{Style.RESET_ALL}")
 
+
 def get_public_ip_address():
     print(f"{Fore.LIGHTGREEN_EX}", IpChecker.get_public_ip_address(), f"{Style.RESET_ALL}")
+
+
+def get_destination_trace_route():
+    print("Traceroute. Write domain name or IP address:")
+    destination = input()
+    tracert = Tracert()
+    tracert.trace(destination)
 
 
 def show_menu():
@@ -57,6 +67,7 @@ def show_menu():
     print("4. Check is the port open")
     print("5. Resolve DNS name to an IP address")
     print("6. Resolve IP address to a name")
+    print("7. Tracert")
     print()
 
 
@@ -76,5 +87,7 @@ while True:
             resolve_dns_name()
         case 6:
             resolve_ip()
+        case 7:
+            get_destination_trace_route()
         case _:
             print("Wrong option, try again.")
