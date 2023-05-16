@@ -3,6 +3,7 @@ import socket
 
 import requests
 import speedtest as st
+from ip2geotools.databases.noncommercial import DbIpCity
 
 
 class Speed:
@@ -87,3 +88,15 @@ class Tracert:
     def trace(cls, destination):
         command = "tracert " + destination
         return os.system(command)
+
+
+class Location:
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def print_details(csl, name):
+        ip = DnsResolver.resolve_name_to_ip(name)
+        location_info = DbIpCity.get(ip, api_key="free")
+        return location_info

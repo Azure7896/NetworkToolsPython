@@ -6,6 +6,7 @@ from InternetTools import IpChecker
 from InternetTools import PortChecker
 from InternetTools import Speed
 from InternetTools import Tracert
+from InternetTools import Location
 
 
 def do_speedtest():
@@ -57,6 +58,14 @@ def get_destination_trace_route():
     tracert.trace(destination)
 
 
+def get_location():
+    name = input()
+    location_info = Location().print_details(name)
+    print(f"{Fore.LIGHTGREEN_EX}IP Address: {location_info.ip_address}")
+    print(f"Location: {location_info.city}, {location_info.region}, {location_info.country}")
+    print(f"Coordinates: (Lat: {location_info.latitude}, Lng: {location_info.longitude}){Style.RESET_ALL}")
+
+
 def show_menu():
     print("Network tools")
     print()
@@ -89,5 +98,7 @@ while True:
             resolve_ip()
         case 7:
             get_destination_trace_route()
+        case 8:
+            get_location()
         case _:
             print("Wrong option, try again.")
