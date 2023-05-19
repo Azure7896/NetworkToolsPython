@@ -35,7 +35,7 @@ class Speed:
         return ping
 
 
-class IpChecker:
+class Ip:
 
     def __init__(self):
         pass
@@ -49,7 +49,7 @@ class IpChecker:
         return str(requests.get('https://checkip.amazonaws.com').text.strip())
 
 
-class PortChecker:
+class Port:
 
     def __init__(self):
         pass
@@ -65,7 +65,7 @@ class PortChecker:
             return False
 
 
-class DnsResolver:
+class Dns:
 
     def __init__(self):
         pass
