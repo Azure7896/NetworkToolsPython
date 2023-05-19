@@ -1,9 +1,9 @@
 from colorama import Fore
 from colorama import Style
 
-from InternetTools import DnsResolver
-from InternetTools import IpChecker
-from InternetTools import PortChecker
+from InternetTools import Dns
+from InternetTools import Ip
+from InternetTools import Port
 from InternetTools import Speed
 from InternetTools import Tracert
 from InternetTools import Location
@@ -24,7 +24,7 @@ def do_speedtest():
 
 
 def check_port():
-    port_checker = PortChecker()
+    port_checker = Port()
     print("Write the port number:")
     port = int(input())
     if port_checker.port_check(port):
@@ -35,20 +35,20 @@ def check_port():
 
 def resolve_dns_name():
     name = input()
-    dns_checker = DnsResolver
+    dns_checker = Dns
     print(f"{Fore.LIGHTGREEN_EX}Name", name, "is resolved to an IP", dns_checker.resolve_name_to_ip(name),
           f"{Style.RESET_ALL}")
 
 
 def resolve_ip():
     ip_address = input()
-    dns_checker = DnsResolver
+    dns_checker = Dns
     print(f"{Fore.LIGHTGREEN_EX}Ip address", ip_address, "is resolved to a name",
           dns_checker.resolve_ip_to_name(ip_address), f"{Style.RESET_ALL}")
 
 
 def get_public_ip_address():
-    print(f"{Fore.LIGHTGREEN_EX}", IpChecker.get_public_ip_address(), f"{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTGREEN_EX}", Ip.get_public_ip_address(), f"{Style.RESET_ALL}")
 
 
 def get_destination_trace_route():
@@ -87,7 +87,7 @@ while True:
         case 1:
             do_speedtest()
         case 2:
-            IpChecker.get_ip_addresses()
+            Ip.get_ip_addresses()
         case 3:
             get_public_ip_address()
         case 4:
