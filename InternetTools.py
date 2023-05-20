@@ -48,6 +48,10 @@ class Ip:
     def get_public_ip_address(cls):
         return str(requests.get('https://checkip.amazonaws.com').text.strip())
 
+    @classmethod
+    def get_route(cls):
+        return os.system("route PRINT")
+
 
 class Port:
 
