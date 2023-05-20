@@ -100,5 +100,7 @@ while True:
             get_destination_trace_route()
         case 8:
             get_location()
+        case 9:
+            Ip.get_route()
         case _:
             print("Wrong option, try again.")
