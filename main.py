@@ -77,6 +77,9 @@ def show_menu():
     print("5. Resolve DNS name to an IP address")
     print("6. Resolve IP address to a name")
     print("7. Tracert")
+    print("8. Check server location")
+    print("9. Show route print")
+    print("10. Netstat")
     print()
 
 
@@ -102,5 +105,7 @@ while True:
             get_location()
         case 9:
             Ip.get_route()
+        case 10:
+            Ip.nestat()
         case _:
             print("Wrong option, try again.")
