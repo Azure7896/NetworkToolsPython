@@ -52,6 +52,10 @@ class Ip:
     def get_route(cls):
         return os.system("route PRINT")
 
+    @classmethod
+    def nestat(cls):
+        return os.system("netstat")
+
 
 class Port:
 
