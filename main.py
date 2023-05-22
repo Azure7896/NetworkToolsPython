@@ -1,12 +1,12 @@
 from colorama import Fore
 from colorama import Style
 
-from InternetTools import Dns
-from InternetTools import Ip
-from InternetTools import Port
-from InternetTools import Speed
-from InternetTools import Tracert
-from InternetTools import Location
+from NetworkTools import Dns
+from NetworkTools import Ip
+from NetworkTools import Port
+from NetworkTools import Speed
+from NetworkTools import Tracert
+from NetworkTools import Location
 
 
 def do_speedtest():
@@ -65,6 +65,9 @@ def get_location():
     print(f"Location: {location_info.city}, {location_info.region}, {location_info.country}")
     print(f"Coordinates: (Lat: {location_info.latitude}, Lng: {location_info.longitude}){Style.RESET_ALL}")
 
+def do_ip_renew():
+    Ip.ip_renew()
+
 
 def show_menu():
     print("Network tools")
@@ -80,6 +83,7 @@ def show_menu():
     print("8. Check server location")
     print("9. Show route print")
     print("10. Netstat")
+    print ("11. Renew IP address")
     print()
 
 
@@ -106,6 +110,8 @@ while True:
         case 9:
             Ip.get_route()
         case 10:
-            Ip.nestat()
+            Ip.netstat()
+        case 11:
+            do_ip_renew()
         case _:
             print("Wrong option, try again.")

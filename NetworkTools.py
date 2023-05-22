@@ -53,8 +53,13 @@ class Ip:
         return os.system("route PRINT")
 
     @classmethod
-    def nestat(cls):
+    def netstat(cls):
         return os.system("netstat")
+
+    @classmethod
+    def ip_renew(cls):
+        os.system("ipconfig /release")
+        os.system("ipconfig /renew")
 
 
 class Port:
@@ -105,6 +110,8 @@ class Location:
 
     @classmethod
     def print_details(csl, name):
-        ip = DnsResolver.resolve_name_to_ip(name)
+        ip = Dns.resolve_name_to_ip(name)
         location_info = DbIpCity.get(ip, api_key="free")
         return location_info
+
+
